@@ -1,0 +1,16 @@
+<div>
+    <h1>All dynamic routes are:</h1>
+    <h2>用subscribe取得param</h2>
+    <p *ngFor="let param of params;let i=index;trackBy:trackByParams">
+        第{{i}}個param是： <span class="text-blue">{{param}}</span>
+    </p>
+    <h2>用snapshot取得param</h2>
+    <p *ngFor="let param of params;let i=index;trackBy:trackBySnap">
+        第{{i}}個param是： <span class="text-blue">{{param}}</span>
+    </p>
+    <div>
+        <div>前往'/home/{{navigateParam}}</div>
+        <button [routerLink]="['/home',navigateParam]">go</button>
+        <button (click)="getNextRouteURL()">更新前往網址</button>
+    </div>
+</div>

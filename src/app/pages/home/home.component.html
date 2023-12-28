@@ -1,0 +1,40 @@
+<div>
+    <h1 class="text-center">anugular 學習</h1>
+    <div>
+        <h2 class="text-center" [ngClass]="titleBg">Style</h2>
+        <p>APP components</p>
+        <app-a class="active"></app-a>
+        <app-b class="hihi"></app-b>
+    </div>
+    <div>
+        <h2 class="text-center" [ngClass]="titleBg">Directive</h2>
+        <div>
+            <h3 class="text-center">build-in directives</h3>
+            <div [ngClass]="dynamicClass">ngClass</div>
+            <div [ngClass]="{'bg-red':isBgRed}">ngClass2</div>
+            <button (click)="toggleBg()">切換ngClass背景</button>
+            <button (click)="toggleColor()">切換ngClass顏色</button>
+        </div>
+        <div>
+            <h3 class="text-center">custom directives</h3>
+            <p appHighlight>hello ng-directive</p>
+            <p>Pick a highlight color</p>
+        </div>
+        <div>
+            <input type="radio" name="colors" (click)="highlightColor='lightgreen'">Green
+            <input type="radio" name="colors" (click)="highlightColor='yellow'">Yellow
+            <input type="radio" name="colors" (click)="highlightColor='cyan'">Cyan
+        </div>
+        <p [appHighlight]="highlightColor" defaultColor="violet">
+            Highlight me too!
+        </p>
+    </div>
+    <div>
+        <h2 class="text-center" [ngClass]="titleBg">Dependency injection & services</h2>
+        <app-root-test><app-child></app-child></app-root-test>
+    </div>
+    <div>
+        <h2 class="text-center" [ngClass]="titleBg">Router</h2>
+        <button routerLink="/home/123213">前往頁面</button>
+    </div>
+</div>
