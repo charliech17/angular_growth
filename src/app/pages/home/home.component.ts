@@ -7,6 +7,8 @@ import { BComponent } from "../../../components/b.components"
 import { RootTestComponent } from "../../components/root-test/root-test.component"
 import { ChildComponent } from '../../components/child/child.component'
 import { TestSelectorComponent } from '../../components/test-selector/test-selector.component'
+import { T1Component } from '../../components/storeTest/t1/t1.component'
+import { T2Component } from '../../components/storeTest/t2/t2.component'
 
 import { HighlightDirective } from "../../directives/highlight.directive"
 
@@ -20,7 +22,8 @@ import { BaseUtilsService } from '../../services/base-utils.service'
   imports: [
     CommonModule, AComponent, BComponent, 
     HighlightDirective, RootTestComponent, 
-    ChildComponent,RouterModule, TestSelectorComponent
+    ChildComponent,RouterModule, TestSelectorComponent,
+    T1Component,T2Component
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
