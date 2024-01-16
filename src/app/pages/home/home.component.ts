@@ -6,6 +6,7 @@ import { AComponent } from "../../../components/a.components"
 import { BComponent } from "../../../components/b.components"
 import { RootTestComponent } from "../../components/root-test/root-test.component"
 import { ChildComponent } from '../../components/child/child.component'
+import { TestSelectorComponent } from '../../components/test-selector/test-selector.component'
 
 import { HighlightDirective } from "../../directives/highlight.directive"
 
@@ -16,7 +17,11 @@ import { BaseUtilsService } from '../../services/base-utils.service'
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, AComponent, BComponent, HighlightDirective, RootTestComponent, ChildComponent,RouterModule],
+  imports: [
+    CommonModule, AComponent, BComponent, 
+    HighlightDirective, RootTestComponent, 
+    ChildComponent,RouterModule, TestSelectorComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   providers: [
