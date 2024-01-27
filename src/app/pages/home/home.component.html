@@ -46,4 +46,22 @@
         <h2 class="text-center" [ngClass]="titleBg">Router</h2>
         <button routerLink="/home/123213">前往頁面</button>
     </div>
+    <div>
+        <h2 class="text-center" [ngClass]="titleBg">Content-Projection</h2>
+        <app-content-projection>
+            <div>I am show in default Content</div>
+            <div class="some-class">My class is some-class. I am show in select=".some-class" content</div>
+            <div id="someId">My Id is someId. I am show in select="#someId" content</div>
+            <ng-template appConditionDirective>
+                <div>hihi</div>
+                <app-vcc></app-vcc>
+            </ng-template>
+        </app-content-projection>
+    </div>
+    <div>
+        <h2 class="text-center" [ngClass]="titleBg">ViewChild vs ContentChild</h2>
+        <app-view-child-content-child>
+            <div #cc>我是content內容</div>
+        </app-view-child-content-child>
+    </div>
 </div>

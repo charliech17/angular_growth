@@ -1,0 +1,8 @@
+<div>
+    <h3 [class]="isToggleBg ? 'bg-orange' : ''" #vc>viewChild</h3>
+    <ng-content></ng-content>
+    <blockquote class="bg-gary p-8">
+        viewChild ->簡單說用來抓當前元件的相關元素 <br/>
+        ContentChild -> 用來抓ng-content中project的內容
+    </blockquote>
+</div>
