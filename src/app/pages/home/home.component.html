@@ -64,4 +64,16 @@
             <div #cc>我是content內容</div>
         </app-view-child-content-child>
     </div>
+    <div>
+        <h2 class="text-center" [ngClass]="titleBg">ngTemplateOutlet</h2>
+        <div 
+            *ngTemplateOutlet="
+                myTmp; 
+                context: {boo: 'I am boo',$implicit:'I am default',}"
+        ></div>
+        <ng-template #myTmp let-default let-boo="boo">
+            <div>{{default}}</div>
+            <div>{{boo}}</div>
+        </ng-template>
+    </div>
 </div>
