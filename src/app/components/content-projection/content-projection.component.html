@@ -13,5 +13,6 @@
         <ng-container [ngTemplateOutlet]="conChild.templateRef"></ng-container>
     </div>
     <button class="mt-8" (click)="expanded = !expanded">更換expanded狀態</button>
-
+    <!-- ngProjectAs -->
+    <ng-content select="[hello]"></ng-content>
 </div>
