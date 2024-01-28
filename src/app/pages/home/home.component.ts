@@ -12,6 +12,7 @@ import { T2Component } from '../../components/storeTest/t2/t2.component'
 import { ContentProjectionComponent, ConditionDirective } from '../../components/content-projection/content-projection.component'
 import { ViewChildContentChildComponent } from '../../components/view-child-content-child/view-child-content-child.component'
 import { VccComponent } from '../../components/vcc/vcc.component'
+import { DynamicComponentComponent } from '../../components/teach/component/dynamic-component/dynamic-component.component';
 
 import { HighlightDirective } from "../../directives/highlight.directive"
 
@@ -27,7 +28,7 @@ import { BaseUtilsService } from '../../services/base-utils.service'
     HighlightDirective, RootTestComponent, 
     ChildComponent,RouterModule, TestSelectorComponent,
     T1Component,T2Component, ContentProjectionComponent,
-    ViewChildContentChildComponent, VccComponent, ConditionDirective
+    ViewChildContentChildComponent, VccComponent, ConditionDirective, DynamicComponentComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
