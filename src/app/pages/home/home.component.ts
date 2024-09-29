@@ -19,6 +19,7 @@ import { HighlightDirective } from "../../directives/highlight.directive"
 import { FlowerService } from '../../services/flower-service.service'
 import { AnimalService } from '../../services/animal.service'
 import { BaseUtilsService } from '../../services/base-utils.service'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -65,5 +66,18 @@ export class HomeComponent {
 
   toggleColor() {
     this.dynamicClass['color-white'] = !this.dynamicClass['color-white'] 
+  }
+
+  callApi() {
+    const user = {
+      name: 'John',
+      age: 30,
+      email: 'john@example.com'
+    };
+    this.http.post("http://localhost:8080/api/user", user).subscribe(
+      (res) => {
+        console.log('res', res);
+      }
+    );
   }
 }
