@@ -85,4 +85,11 @@
         <h2>測試呼叫java api</h2>
         <button (click)="callApi()">呼叫</button>
     </div>
+    <div>
+        <h2>測試Websocket</h2>
+        <button (click)="startWs()">開始ws</button>
+        <label for="wsSendMessageInput">發送ws訊息</label>
+        <input name="wsSendMessageInput" id="wsSendMessageInput" type="text" [formControl]="wsSendControl">
+        <button (click)="sendWsMessage()"></button>
+    </div>
 </div>

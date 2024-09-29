@@ -20,6 +20,8 @@ import { FlowerService } from '../../services/flower-service.service'
 import { AnimalService } from '../../services/animal.service'
 import { BaseUtilsService } from '../../services/base-utils.service'
 import { HttpClient } from '@angular/common/http';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Client } from '@stomp/stompjs';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +31,8 @@ import { HttpClient } from '@angular/common/http';
     HighlightDirective, RootTestComponent, 
     ChildComponent,RouterModule, TestSelectorComponent,
     T1Component,T2Component, ContentProjectionComponent,
-    ViewChildContentChildComponent, VccComponent, ConditionDirective, DynamicComponentComponent
+    ViewChildContentChildComponent, VccComponent, ConditionDirective, DynamicComponentComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -51,8 +54,10 @@ export class HomeComponent {
   private titleBgList = [
     'bg-orange','bg-cyan','bg-pink','bg-purple','bg-dark-red'
   ];
+  wsSendControl = new FormControl("", {nonNullable: true})
+  stompClient: null | Client = null
 
-  constructor(public baseUtil: BaseUtilsService) {}
+  constructor(public baseUtil: BaseUtilsService, private http: HttpClient) {}
 
   ngOnInit() {
     const selectBgIndex = this.baseUtil.getRandomInt(0,this.titleBgList.length-1)
@@ -79,5 +84,39 @@ export class HomeComponent {
         console.log('res', res);
       }
     );
+  }
+
+  startWs() {
+    const client = new Client({
+      brokerURL: 'ws://localhost:8080/gs-guide-websocket', // 後端設定gs-guide-websocket
+      onConnect: () => {
+        client.subscribe('/topic/greetings', message =>
+          console.log(`Received: ${message.body}`)
+        );
+      },
+      onStompError:(err) => {
+        console.log("onStompError: " + err)
+      },
+      onWebSocketError: (err) => {
+        console.log("onWebSocketError: " + err)
+      }
+    });
+    this.stompClient = client;
+    client.activate();
+  }
+
+  sendWsMessage() {
+    const client = this.stompClient;
+    if(!client) {
+      throw new Error('尚未有stompClient');
+    }
+
+    client.publish({ 
+      destination: "/app/hello", 
+      body: JSON.stringify({
+        id: 11111111,
+        content: this.wsSendControl.value
+      }) 
+    });
   }
 }
